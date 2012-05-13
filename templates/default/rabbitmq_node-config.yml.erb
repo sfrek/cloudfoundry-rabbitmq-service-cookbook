@@ -1,0 +1,23 @@
+---
+capacity: <%= node.cloudfoundry_rabbitmq_service.node.capacity%>
+plan: free
+local_db: sqlite3:<%= node.cloudfoundry_rabbitmq_service.node.base_dir %>/rabbit_node.db
+mbus: nats://<%= node.nats_server.user %>:<%= node.nats_server.password %>@<%= node.cloudfoundry_common.nats_server.host %>:<%= node.nats_server.port %>/
+index: <%= node.cloudfoundry_rabbitmq_service.node[:index] %>
+base_dir: <%= node.cloudfoundry_rabbitmq_service.node.instances_dir %>
+pid: <%= node.cloudfoundry_rabbitmq_service.node.pid_file %>
+node_id: rabbitmq_node_<%= node.cloudfoundry_rabbitmq_service.node[:index] %>
+port_range:
+  first: <%= node.cloudfoundry_rabbitmq_service.node.port_range[:first] %>
+  last: <%= node.cloudfoundry_rabbitmq_service.node.port_range[:last] %>
+admin_port_range:
+  first: <%= node.cloudfoundry_rabbitmq_service.node.admin_port_range[:first] %>
+  last: <%= node.cloudfoundry_rabbitmq_service.node.admin_port_range[:last] %>
+max_clients: <%= node.cloudfoundry_rabbitmq_service.node.max_clients %>
+rabbitmq_log_dir: <%= node.cloudfoundry_rabbitmq_service.node.db_logs_dir %>
+rabbitmq_server: <%= node.cloudfoundry_rabbitmq_service.path %>/sbin/rabbitmq-server
+rabbitmq_start_timeout: 5
+migration_nfs: <%= node.cloudfoundry_rabbitmq_service.node.migration_nfs %>
+logging:
+  level: <%= node.cloudfoundry_rabbitmq_service.node.log_level %>
+  file: <%= node.cloudfoundry_rabbitmq_service.node.log_file %>

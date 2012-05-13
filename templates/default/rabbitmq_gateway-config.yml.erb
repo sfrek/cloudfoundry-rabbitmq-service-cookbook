@@ -1,0 +1,24 @@
+---
+cloud_controller_uri: <%= node.cloudfoundry_cloud_controller.server.api_uri %>
+service:
+  name: rabbitmq
+  version: "2.4"
+  description: "RabbitMQ message queue"
+  plans: ["free"]
+  tags: ["rabbitmq", "rabitmq-2.4", "message-queue", "amqp"]
+  timeout: 15
+host: localhost
+node_timeout: <%= node.cloudfoundry_rabbitmq_service.gateway.node_timeout %>
+index: 0
+token: <%= node.cloudfoundry_common.service_token %>
+mbus: nats://<%= node.nats_server.user %>:<%= node.nats_server.password %>@<%= node.cloudfoundry_common.nats_server.host %>:<%= node.nats_server.port %>/
+pid: <%= node.cloudfoundry_rabbitmq_service.gateway.pid_file %>
+logging:
+  level: <%= node.cloudfoundry_rabbitmq_service.gateway.log_level %>
+  file: <%= node.cloudfoundry_rabbitmq_service.gateway.log_file %>
+plan_management:
+  plans:
+    free:
+      low_water: 10
+      high_water: 180
+      #allow_over_provisioning: false
