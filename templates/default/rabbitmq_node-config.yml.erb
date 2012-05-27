@@ -16,7 +16,7 @@ admin_port_range:
 max_clients: <%= node.cloudfoundry_rabbitmq_service.node.max_clients %>
 rabbitmq_log_dir: <%= node.cloudfoundry_rabbitmq_service.node.db_logs_dir %>
 rabbitmq_server: <%= node.cloudfoundry_rabbitmq_service.path %>/sbin/rabbitmq-server
-rabbitmq_start_timeout: 5
+rabbitmq_start_timeout: 10
 migration_nfs: <%= node.cloudfoundry_rabbitmq_service.node.migration_nfs %>
 logging:
   level: <%= node.cloudfoundry_rabbitmq_service.node.log_level %>
