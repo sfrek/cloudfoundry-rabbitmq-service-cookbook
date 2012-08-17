@@ -1,5 +1,5 @@
 ---
-cloud_controller_uri: <%= node.cloudfoundry_cloud_controller.server.api_uri %>
+cloud_controller_uri: <%= node['cloudfoundry_cloud_controller']['server']['api_uri'] %>
 service:
   name: rabbitmq
   version: "2.4"
@@ -8,14 +8,14 @@ service:
   tags: ["rabbitmq", "rabitmq-2.4", "message-queue", "amqp"]
   timeout: 15
 host: localhost
-node_timeout: <%= node.cloudfoundry_rabbitmq_service.gateway.node_timeout %>
+node_timeout: <%= node['cloudfoundry_rabbitmq_service']['gateway']['node_timeout'] %>
 index: 0
-token: <%= node.cloudfoundry_common.service_token %>
-mbus: nats://<%= node.nats_server.user %>:<%= node.nats_server.password %>@<%= node.cloudfoundry_common.nats_server.host %>:<%= node.nats_server.port %>/
-pid: <%= node.cloudfoundry_rabbitmq_service.gateway.pid_file %>
+token: <%= node['cloudfoundry']['service_token'] %>
+mbus: nats://<%= node.nats_server.user %>:<%= node.nats_server.password %>@<%= node['cloudfoundry']['nats_server']['host'] %>:<%= node.nats_server.port %>/
+pid: <%= @pid_file %>
 logging:
-  level: <%= node.cloudfoundry_rabbitmq_service.gateway.log_level %>
-  file: <%= node.cloudfoundry_rabbitmq_service.gateway.log_file %>
+  level: <%= node['cloudfoundry_rabbitmq_service']['gateway']['log_level'] %>
+  file: <%= @log_file %>
 plan_management:
   plans:
     free:
