@@ -6,7 +6,7 @@ service:
   description: "RabbitMQ message queue"
   plans: ["free"]
   tags: ["rabbitmq", "rabitmq-2.4", "message-queue", "amqp"]
-  timeout: 15
+  timeout: <%= node['cloudfoundry_rabbitmq_service']['gateway']['timeout'] %>
 host: localhost
 node_timeout: <%= node['cloudfoundry_rabbitmq_service']['gateway']['node_timeout'] %>
 index: 0

@@ -19,12 +19,6 @@
 
 include_attribute "cloudfoundry"
 
-# Log level for the msyql service gateway.
-default['cloudfoundry_rabbitmq_service']['gateway']['log_level'] = "info"
-
-# TODO (trotter): Find out what this does.
-default['cloudfoundry_rabbitmq_service']['gateway']['node_timeout'] = 30
-
 # Where to write the rabbitmq service node's logs.
 default['cloudfoundry_rabbitmq_service']['node']['db_logs_dir'] = File.join(node['cloudfoundry']['log_dir'], "rabbit")
 
