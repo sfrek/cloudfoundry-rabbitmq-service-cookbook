@@ -17,6 +17,10 @@
 # limitations under the License.
 #
 
+node.default['cloudfoundry_rabbitmq_service']['node']['base_dir'] = File.join(node['cloudfoundry_service']['base_dir'], "rabbit")
+node.default['cloudfoundry_rabbitmq_service']['node']['db_logs_dir'] = File.join(node['cloudfoundry']['log_dir'], "rabbit")
+node.default['cloudfoundry_rabbitmq_service']['node']['instances_dir'] = "#{node['cloudfoundry_rabbitmq_service']['node']['base_dir']}/instances"
+
 include_recipe "cloudfoundry-rabbitmq-service::install"
 
 %w(base_dir db_logs_dir instances_dir).each do |dir|
