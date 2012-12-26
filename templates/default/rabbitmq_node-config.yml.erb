@@ -2,7 +2,7 @@
 capacity: <%= node['cloudfoundry_rabbitmq_service']['node']['capacity']%>
 plan: free
 local_db: sqlite3:<%= node['cloudfoundry_rabbitmq_service']['node']['base_dir'] %>/rabbit_node.db
-mbus: nats://<%= node.nats_server.user %>:<%= node.nats_server.password %>@<%= node['cloudfoundry']['nats_server']['host'] %>:<%= node.nats_server.port %>/
+mbus: <%= cf_mbus_url %>
 index: <%= node['cloudfoundry_rabbitmq_service']['node']['index'] %>
 base_dir: <%= node['cloudfoundry_rabbitmq_service']['node']['instances_dir'] %>
 pid: <%= @pid_file %>

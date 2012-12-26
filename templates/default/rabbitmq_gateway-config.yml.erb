@@ -1,5 +1,5 @@
 ---
-cloud_controller_uri: <%= node['cloudfoundry_cloud_controller']['server']['api_uri'] %>
+cloud_controller_uri: <%= cloud_controller_url %>
 service:
   name: rabbitmq
   version: "2.4"
@@ -11,7 +11,7 @@ host: localhost
 node_timeout: <%= node['cloudfoundry_rabbitmq_service']['gateway']['node_timeout'] %>
 index: 0
 token: <%= node['cloudfoundry']['service_token'] %>
-mbus: nats://<%= node.nats_server.user %>:<%= node.nats_server.password %>@<%= node['cloudfoundry']['nats_server']['host'] %>:<%= node.nats_server.port %>/
+mbus: <%= cf_mbus_url %>
 pid: <%= @pid_file %>
 logging:
   level: <%= node['cloudfoundry_rabbitmq_service']['gateway']['log_level'] %>
