@@ -8,11 +8,11 @@ base_dir: <%= node['cloudfoundry_rabbitmq_service']['node']['instances_dir'] %>
 pid: <%= @pid_file %>
 node_id: rabbitmq_node_<%= node['cloudfoundry_rabbitmq_service']['node']['index'] %>
 port_range:
-  first: <%= node['cloudfoundry_rabbitmq_service']['node']['port_range'][:first] %>
-  last: <%= node['cloudfoundry_rabbitmq_service']['node']['port_range'][:last] %>
+  first: <%= node['cloudfoundry_rabbitmq_service']['node']['port_range']['first'] %>
+  last: <%= node['cloudfoundry_rabbitmq_service']['node']['port_range']['last'] %>
 admin_port_range:
-  first: <%= node['cloudfoundry_rabbitmq_service']['node']['admin_port_range'][:first] %>
-  last: <%= node['cloudfoundry_rabbitmq_service']['node']['admin_port_range'][:last] %>
+  first: <%= node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['first'] %>
+  last: <%= node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['last'] %>
 max_clients: <%= node['cloudfoundry_rabbitmq_service']['node']['max_clients'] %>
 rabbitmq_log_dir: <%= node['cloudfoundry_rabbitmq_service']['node']['db_logs_dir'] %>
 rabbitmq_server: <%= node['cloudfoundry_rabbitmq_service']['path'] %>/sbin/rabbitmq-server
