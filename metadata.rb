@@ -1,7 +1,7 @@
-maintainer       "Trotter Cashion"
-maintainer_email "cashion@gmail.com"
+maintainer       "Andrea Campi"
+maintainer_email "andrea.campi@zephirworks.com"
 license          "Apache 2.0"
-description      "Installs/Configures cloudfoundry-mongodb-service"
+description      "Installs/Configures cloudfoundry-rabbitmq-service"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
 
