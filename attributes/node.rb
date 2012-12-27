@@ -45,3 +45,9 @@ default['cloudfoundry_rabbitmq_service']['node']['migration_nfs'] = "/mnt/migrat
 
 # Maximum number of clients that can connect to the service.
 default['cloudfoundry_rabbitmq_service']['node']['max_clients'] = 1000
+
+# A Hash mapping versions of RabbitMQ to their runtime details.
+default['cloudfoundry_rabbitmq_service']['node']['versions'] = {}
+
+# The default version for requests to this node.
+default['cloudfoundry_rabbitmq_service']['node']['default_version'] = "2.4"

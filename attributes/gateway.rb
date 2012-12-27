@@ -25,3 +25,8 @@ default['cloudfoundry_rabbitmq_service']['gateway']['node_timeout'] = 30
 
 # Time out for completing (de)provisioning requests.
 default['cloudfoundry_rabbitmq_service']['gateway']['timeout'] = 15
+
+# Human-readable aliases for RabbitMQ versions.
+default['cloudfoundry_rabbitmq_service']['gateway']['version_aliases'] = {
+  'current' => '2.4'
+}

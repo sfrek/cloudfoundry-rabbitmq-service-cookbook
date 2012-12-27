@@ -21,3 +21,11 @@ migration_nfs: <%= node['cloudfoundry_rabbitmq_service']['node']['migration_nfs'
 logging:
   level: <%= node['cloudfoundry_rabbitmq_service']['node']['log_level'] %>
   file: <%= @log_file %>
+
+<%
+  versions = node['cloudfoundry_rabbitmq_service']['node']['versions']
+  raise "You need to install rabbitmq, see the README for cloudfoundry-rabbitmq-service" unless versions.any?
+  supported_versions = versions.keys.sort.map { |e| "\"#{e}\"" }.join(", ")
+%>
+supported_versions: [<%= supported_versions %>]
+default_version: "<%= node['cloudfoundry_rabbitmq_service']['node']['default_version'] %>"

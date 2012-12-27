@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+node.set['cloudfoundry_rabbitmq_service']['node']['versions']['2.4'] = {}
+
 case node['platform']
 when "ubuntu"
   package "erlang-nox"
