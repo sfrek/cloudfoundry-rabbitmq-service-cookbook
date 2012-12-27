@@ -30,8 +30,7 @@ include_recipe "cloudfoundry-rabbitmq-service::install"
   end
 end
 
-cloudfoundry_service_component "rabbitmq_node" do
+cloudfoundry_service_component "rabbit_node" do
   service_name  "rabbit"
-  component     :node
   action        [:create, :enable]
 end
