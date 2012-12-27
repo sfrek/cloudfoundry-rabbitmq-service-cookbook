@@ -23,6 +23,13 @@ node.default['cloudfoundry_rabbitmq_service']['node']['instances_dir'] = "#{node
 
 include_recipe "cloudfoundry-rabbitmq-service::install"
 
+service_rbenv do
+  namespace 'cloudfoundry_rabbitmq_service'
+  component 'gateway'
+end
+
+include_recipe "cloudfoundry_service::dependencies"
+
 %w(base_dir db_logs_dir instances_dir).each do |dir|
   directory node['cloudfoundry_rabbitmq_service']['node'][dir] do
     owner node['cloudfoundry']['user']

@@ -17,6 +17,13 @@
 # limitations under the License.
 #
 
+service_rbenv do
+  namespace 'cloudfoundry_rabbitmq_service'
+  component 'gateway'
+end
+
+include_recipe "cloudfoundry_service::dependencies"
+
 cloudfoundry_service_component "rabbit_gateway" do
   service_name  "rabbit"
   action        [:create, :enable]
