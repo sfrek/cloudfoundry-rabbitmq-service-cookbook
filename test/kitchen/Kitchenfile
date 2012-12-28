@@ -1,4 +1,5 @@
 cookbook "cloudfoundry-rabbitmq-service" do
   configuration "gateway"
+  configuration "install"
   runtimes []
 end
