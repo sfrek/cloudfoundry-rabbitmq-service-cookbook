@@ -5,7 +5,7 @@ service:
   version: "2.4"
   description: "RabbitMQ message queue"
   plans: ["free"]
-  tags: ["rabbitmq", "rabitmq-2.4", "message-queue", "amqp"]
+  tags: ["rabbitmq", "rabbitmq-2.4", "message-queue", "amqp"]
   timeout: <%= node['cloudfoundry_rabbitmq_service']['gateway']['timeout'] %>
   supported_versions: [<%= cfservicegw_supported_versions_string('rabbitmq') %>]
   version_aliases:
