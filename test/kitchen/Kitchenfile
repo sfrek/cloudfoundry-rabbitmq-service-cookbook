@@ -1,5 +1,6 @@
 cookbook "cloudfoundry-rabbitmq-service" do
   configuration "gateway"
   configuration "install"
+  configuration "node_with_rabbitmq24"
   runtimes []
 end
