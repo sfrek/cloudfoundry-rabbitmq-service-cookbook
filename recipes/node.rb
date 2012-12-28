@@ -33,7 +33,9 @@ include_recipe "cloudfoundry_service::dependencies"
 %w(base_dir db_logs_dir instances_dir).each do |dir|
   directory node['cloudfoundry_rabbitmq_service']['node'][dir] do
     owner node['cloudfoundry']['user']
+    group node['cloudfoundry']['group']
     mode  "0755"
+    recursive true
   end
 end
 
