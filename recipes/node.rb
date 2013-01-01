@@ -25,7 +25,7 @@ include_recipe "cloudfoundry-rabbitmq-service::install"
 
 service_rbenv do
   namespace 'cloudfoundry_rabbitmq_service'
-  component 'gateway'
+  component 'node'
 end
 
 include_recipe "cloudfoundry_service::dependencies"
@@ -41,5 +41,6 @@ end
 
 cloudfoundry_service_component "rabbit_node" do
   service_name  "rabbit"
+  ruby_version  node['cloudfoundry_rabbitmq_service']['node']['ruby_version']
   action        [:create, :enable]
 end

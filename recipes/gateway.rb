@@ -26,5 +26,6 @@ include_recipe "cloudfoundry_service::dependencies"
 
 cloudfoundry_service_component "rabbit_gateway" do
   service_name  "rabbit"
+  ruby_version  node['cloudfoundry_rabbitmq_service']['gateway']['ruby_version']
   action        [:create, :enable]
 end
