@@ -1,3 +1,4 @@
+name             "cloudfoundry-rabbitmq-service"
 maintainer       "Andrea Campi"
 maintainer_email "andrea.campi@zephirworks.com"
 license          "Apache 2.0"
