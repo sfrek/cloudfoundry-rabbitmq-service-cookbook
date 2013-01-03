@@ -10,16 +10,40 @@ describe 'cloudfoundry-rabbitmq-service::node' do
     sleep 10
   end
 
+  it 'checks out sources with the correct permissions' do
+    dirs = [
+      '/srv/cloudfoundry/services/rabbit_node',
+      '/srv/cloudfoundry/services/rabbit_node/rabbit',
+      '/srv/cloudfoundry/services/rabbit_node/rabbit/bundle',
+      '/srv/cloudfoundry/services/rabbit_node/rabbit/.bundle'
+    ]
+    dirs.each do |d|
+      directory(d).must_exist.with(:owner, 'cloudfoundry').with(:group, 'cloudfoundry')
+    end
+  end
+
+  it 'creates a config file with the correct permissions' do
+    files = [
+      '/etc/cloudfoundry/rabbit_node.yml'
+    ]
+    files.each do |f|
+      file(f).must_exist.with(:owner, 'cloudfoundry').with(:group, 'cloudfoundry')
+    end
+  end
+
   it 'creates a instances dir' do
-    directory('/var/vcap/services/rabbit/instances').must_exist.with(:owner, 'cloudfoundry')
+    directory('/var/vcap/services/rabbit/instances').must_exist.
+      with(:owner, 'cloudfoundry').
+      with(:group, 'cloudfoundry')
   end
 
   it 'creates a database' do
-    file('/var/vcap/services/rabbit/rabbit_node.db').must_exist.with(:owner, 'cloudfoundry')
+    file('/var/vcap/services/rabbit/rabbit_node.db').must_exist.
+      with(:owner, 'cloudfoundry').
+      with(:group, 'cloudfoundry')
   end
 
   it 'creates a valid config file' do
-    file("/etc/cloudfoundry/rabbit_node.yml").must_exist.with(:owner, 'cloudfoundry')
     YAML.load_file('/etc/cloudfoundry/rabbit_node.yml')
   end
 
