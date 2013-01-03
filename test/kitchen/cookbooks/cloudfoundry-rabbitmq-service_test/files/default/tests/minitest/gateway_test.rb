@@ -15,6 +15,27 @@ describe 'cloudfoundry-rabbitmq-service::gateway' do
     sleep 75
   end
 
+  it 'checks out sources with the correct permissions' do
+    dirs = [
+      '/srv/cloudfoundry/services/rabbit_gateway',
+      '/srv/cloudfoundry/services/rabbit_gateway/rabbit',
+      '/srv/cloudfoundry/services/rabbit_gateway/rabbit/bundle',
+      '/srv/cloudfoundry/services/rabbit_gateway/rabbit/.bundle'
+    ]
+    dirs.each do |d|
+      directory(d).must_exist.with(:owner, 'cloudfoundry').with(:group, 'cloudfoundry')
+    end
+  end
+
+  it 'creates a config file with the correct permissions' do
+    files = [
+      '/etc/cloudfoundry/rabbit_gateway.yml'
+    ]
+    files.each do |f|
+      file(f).must_exist.with(:owner, 'cloudfoundry').with(:group, 'cloudfoundry')
+    end
+  end
+
   it 'registers a service in the cloud_controller DB' do
     db = connect('cloud_controller', 'cloudfoundry', 'cloudfoundry')
     res = db.query("select * from services")
