@@ -1,31 +1,31 @@
 ---
+<%
+  versions = node['cloudfoundry_rabbitmq_service']['node']['versions']
+  raise "You need to install rabbitmq, see the README for cloudfoundry-rabbitmq-service" unless versions.any?
+  supported_versions = versions.keys.sort.map { |e| "\"#{e}\"" }.join(", ")
+%>
 capacity: <%= node['cloudfoundry_rabbitmq_service']['node']['capacity']%>
 plan: free
 local_db: sqlite3:<%= node['cloudfoundry_rabbitmq_service']['node']['base_dir'] %>/rabbit_node.db
+base_dir: <%= node['cloudfoundry_rabbitmq_service']['node']['instances_dir'] %>
 mbus: <%= cf_mbus_url %>
 index: <%= node['cloudfoundry_rabbitmq_service']['node']['index'] %>
-base_dir: <%= node['cloudfoundry_rabbitmq_service']['node']['instances_dir'] %>
+logging:
+  level: <%= node['cloudfoundry_rabbitmq_service']['node']['log_level'] %>
+  file: <%= @log_file %>
 pid: <%= @pid_file %>
 node_id: rabbitmq_node_<%= node['cloudfoundry_rabbitmq_service']['node']['index'] %>
+supported_versions: [<%= supported_versions %>]
+default_version: "<%= node['cloudfoundry_rabbitmq_service']['node']['default_version'] %>"
+
+migration_nfs: <%= node['cloudfoundry_rabbitmq_service']['node']['migration_nfs'] %>
+max_clients: <%= node['cloudfoundry_rabbitmq_service']['node']['max_clients'] %>
 port_range:
   first: <%= node['cloudfoundry_rabbitmq_service']['node']['port_range']['first'] %>
   last: <%= node['cloudfoundry_rabbitmq_service']['node']['port_range']['last'] %>
 admin_port_range:
   first: <%= node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['first'] %>
   last: <%= node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['last'] %>
-max_clients: <%= node['cloudfoundry_rabbitmq_service']['node']['max_clients'] %>
 rabbitmq_log_dir: <%= node['cloudfoundry_rabbitmq_service']['node']['db_logs_dir'] %>
 rabbitmq_server: <%= node['cloudfoundry_rabbitmq_service']['path'] %>/sbin/rabbitmq-server
 rabbitmq_start_timeout: 10
-migration_nfs: <%= node['cloudfoundry_rabbitmq_service']['node']['migration_nfs'] %>
-logging:
-  level: <%= node['cloudfoundry_rabbitmq_service']['node']['log_level'] %>
-  file: <%= @log_file %>
-
-<%
-  versions = node['cloudfoundry_rabbitmq_service']['node']['versions']
-  raise "You need to install rabbitmq, see the README for cloudfoundry-rabbitmq-service" unless versions.any?
-  supported_versions = versions.keys.sort.map { |e| "\"#{e}\"" }.join(", ")
-%>
-supported_versions: [<%= supported_versions %>]
-default_version: "<%= node['cloudfoundry_rabbitmq_service']['node']['default_version'] %>"
