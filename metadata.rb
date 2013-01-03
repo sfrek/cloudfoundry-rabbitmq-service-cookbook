@@ -4,11 +4,11 @@ maintainer_email "andrea.campi@zephirworks.com"
 license          "Apache 2.0"
 description      "Installs/Configures cloudfoundry-rabbitmq-service"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "1.0.2"
+version          "1.1.0"
 
 %w( ubuntu ).each do |os|
   supports os
 end
 
-depends "cloudfoundry"
-depends "cloudfoundry_service", "~> 1.2.0"
+depends "cloudfoundry", "~> 1.1.1"
+depends "cloudfoundry_service", "~> 1.2.1"
