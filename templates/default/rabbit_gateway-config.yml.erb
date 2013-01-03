@@ -18,7 +18,6 @@ service:
   <% end %>
   timeout: <%= node['cloudfoundry_rabbitmq_service']['gateway']['timeout'] %>
 
-host: localhost
 token: <%= node['cloudfoundry']['service_token'] %>
 logging:
   level: <%= node['cloudfoundry_rabbitmq_service']['gateway']['log_level'] %>
