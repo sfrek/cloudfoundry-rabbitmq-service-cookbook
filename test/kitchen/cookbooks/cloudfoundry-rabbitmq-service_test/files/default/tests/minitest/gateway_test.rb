@@ -34,7 +34,7 @@ describe 'cloudfoundry-rabbitmq-service::gateway' do
     row['timeout'].must_equal  "15"
 
     tags = YAML.load(row['tags'])
-    tags.must_equal ['rabbitmq', 'rabbitmq-2.4', 'message-queue', 'amqp']
+    tags.must_equal ['message-queue', 'amqp']
 
     plans = YAML.load(row['plans'])
     plans.must_equal ["free"]

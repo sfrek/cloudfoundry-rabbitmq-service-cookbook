@@ -10,7 +10,7 @@ service:
   description: "RabbitMQ message queue"
   plans: ["free"]
   default_plan: 'free'
-  tags: ["rabbitmq", "rabbitmq-2.4", "message-queue", "amqp"]
+  tags: ["message-queue", "amqp"]
   supported_versions: [<%= cfservicegw_supported_versions_string('rabbitmq') %>]
   version_aliases:
   <% node['cloudfoundry_rabbitmq_service']['gateway']['version_aliases'].each do |a, v| %>
