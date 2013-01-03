@@ -9,12 +9,6 @@ end
 describe 'cloudfoundry-rabbitmq-service::gateway' do
   include Helpers::CFServiceRabbitMQTest
 
-  before do
-    # Give the service some time to register with the cloud_controller;
-    # plus sometimes the cloud_controller is really slow to start.
-    sleep 75
-  end
-
   it 'checks out sources with the correct permissions' do
     dirs = [
       '/srv/cloudfoundry/services/rabbit_gateway',
@@ -65,12 +59,18 @@ describe 'cloudfoundry-rabbitmq-service::gateway' do
 
 protected
   def connect(dbname, user, password)
-    @db ||= ::PGconn.new(
-      :host => '127.0.0.1',
-      :port => 5432,
-      :dbname => dbname,
-      :user => user,
-      :password => password
-    )
+    @db ||= begin
+      # Give the service some time to register with the cloud_controller;
+      # plus sometimes the cloud_controller is really slow to start.
+      sleep 75
+
+      ::PGconn.new(
+        :host => '127.0.0.1',
+        :port => 5432,
+        :dbname => dbname,
+        :user => user,
+        :password => password
+      )
+    end
   end
 end

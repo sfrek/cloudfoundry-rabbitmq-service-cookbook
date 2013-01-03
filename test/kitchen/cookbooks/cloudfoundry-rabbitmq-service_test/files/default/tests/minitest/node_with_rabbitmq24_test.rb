@@ -5,11 +5,6 @@ require 'sqlite3'
 describe 'cloudfoundry-rabbitmq-service::node' do
   include Helpers::CFServiceRabbitMQTest
 
-  before do
-    # Give the service some time to start up.
-    sleep 10
-  end
-
   it 'checks out sources with the correct permissions' do
     dirs = [
       '/srv/cloudfoundry/services/rabbit_node',
@@ -102,6 +97,10 @@ describe 'cloudfoundry-rabbitmq-service::node' do
 
 protected
   def sqlite(path)
-    @sqlite ||= SQLite3::Database.new(path)
+    @sqlite ||= begin
+      sleep 10 # Give the service some time to start up.
+      file(path).must_exist # do not create the DB if it doesn't exist
+      SQLite3::Database.new(path)
+    end
   end
 end
