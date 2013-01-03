@@ -30,11 +30,11 @@ Attributes
 gateway
 -------
 
-`node['cloudfoundry_rabbitmq_service']['gateway']['log_level']` - Log level for
+* `node['cloudfoundry_rabbitmq_service']['gateway']['log_level']` - Log level for
 the service gateway daemon. Defaults to `info`.
-`node['cloudfoundry_rabbitmq_service']['gateway']['node_timeout']` - Time out
+* `node['cloudfoundry_rabbitmq_service']['gateway']['node_timeout']` - Time out
 for talking to a service node. Defaults to `30`.
-`node['cloudfoundry_rabbitmq_service']['gateway']['timeout']` - Time out for
+* `node['cloudfoundry_rabbitmq_service']['gateway']['timeout']` - Time out for
 completing (de)provisioning requests. Defaults to `15`.
 * `node['cloudfoundry_rabbitmq_service']['gateway']['ip_route']` - The IP address
 of a host that will be used to determine the correct IP address to use to
@@ -52,28 +52,28 @@ multiple messages. Defaults to `1048576`.
 node
 ----
 
-`node['cloudfoundry_rabbitmq_service']['node']['log_level']` - Log level for
+* `node['cloudfoundry_rabbitmq_service']['node']['log_level']` - Log level for
 the service node daemon. Defaults to `info`.
-`node['cloudfoundry_rabbitmq_service']['node']['index']` - Unique instance
+* `node['cloudfoundry_rabbitmq_service']['node']['index']` - Unique instance
 info; should be configured to be different between nodes. Defaults to `0`.
-`node['cloudfoundry_rabbitmq_service']['node']['capacity']` - Maximum number
+* `node['cloudfoundry_rabbitmq_service']['node']['capacity']` - Maximum number
 of service instances for this node. Defaults to `200`.
-`node['cloudfoundry_rabbitmq_service']['node']['port_range']['first']` -
+* `node['cloudfoundry_rabbitmq_service']['node']['port_range']['first']` -
 The lower end of a range of ports that can be used for services nodes.
 Defaults to `10001`.
-`node['cloudfoundry_rabbitmq_service']['node']['port_range']['last']` -
+* `node['cloudfoundry_rabbitmq_service']['node']['port_range']['last']` -
 The higher end of a range of ports that can be used for services nodes.
 Defaults to `20000`.
-`node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['first']` -
+* `node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['first']` -
 The lower end of a range of ports that can be used for the admin interface
 of services nodes. Defaults to `20001`.
-`node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['last']` -
+* `node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['last']` -
 The higher end of a range of ports that can be used for the admin interface
 of services nodes. Defaults to `30000`.
-`node['cloudfoundry_rabbitmq_service']['node']['migration_nfs']` - Path to
+* `node['cloudfoundry_rabbitmq_service']['node']['migration_nfs']` - Path to
 a directory that will be used when dumping and reimporting a node. Defaults
 to `/mnt/migration`.
-`node['cloudfoundry_rabbitmq_service']['node']['max_clients']` - Maximum
+* `node['cloudfoundry_rabbitmq_service']['node']['max_clients']` - Maximum
 number of clients that can connect to the service.. Defaults to `1000`.
 * `node['cloudfoundry_rabbitmq_service']['node']['max_memory_factor']` -
 Maximum percentage of memory to use. Defaults to `0.5`.
