@@ -36,19 +36,15 @@ describe 'cloudfoundry-rabbitmq-service::node' do
       "pid" => "/var/run/cloudfoundry/rabbit_node.pid",
       "node_id" => "rabbitmq_node_0",
       "max_clients" => 1000,
-      "rabbitmq_server" => "/srv/rabbitmq/rabbitmq-2.4.1/sbin/rabbitmq-server",
       "rabbitmq_start_timeout" => 10,
-      # "supported_versions" => ["2.2"],
-      # "default_version" => "2.2",
-      # "mongod_path" => {
-      #   "2.2" => "/usr/bin/mongod"
-      # },
-      # "mongorestore_path" => {
-      #   "2.2" => "/usr/bin/mongorestore"
-      # },
-      # "mongod_options" => {
-      #   "2.2" => ""
-      # },
+      "supported_versions" => ["2.4"],
+      "default_version" => "2.4",
+      "rabbit" => {
+        "2.4" => {
+          "config_template" => "/srv/cloudfoundry/services/rabbit_node/rabbit/resources/rabbitmq24.config.erb",
+          "rabbitmq_server"=> "/srv/rabbitmq/rabbitmq-2.4.1/sbin/rabbitmq-server"
+        }
+      },
       "port_range" => {
         "first" => 10001,
         "last" => 20000

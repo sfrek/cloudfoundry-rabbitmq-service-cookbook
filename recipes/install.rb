@@ -19,6 +19,9 @@
 #
 
 node.set['cloudfoundry_rabbitmq_service']['node']['versions']['2.4'] = {}
+rabbit24cfg = node['cloudfoundry_rabbitmq_service']['node']['versions']['2.4']
+rabbit24cfg['rabbitmq_base_path'] = node['cloudfoundry_rabbitmq_service']['path']
+rabbit24cfg['config_template'] = "rabbitmq24.config.erb"
 
 case node['platform']
 when "ubuntu"

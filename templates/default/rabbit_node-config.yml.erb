@@ -1,5 +1,6 @@
 ---
 <%
+  node_dir = ::File.join(node['cloudfoundry_service']['install_path'], "rabbit_node") # XXX
   versions = node['cloudfoundry_rabbitmq_service']['node']['versions']
   raise "You need to install rabbitmq, see the README for cloudfoundry-rabbitmq-service" unless versions.any?
   supported_versions = versions.keys.sort.map { |e| "\"#{e}\"" }.join(", ")
@@ -32,8 +33,16 @@ port_range:
 admin_port_range:
   first: <%= node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['first'] %>
   last: <%= node['cloudfoundry_rabbitmq_service']['node']['admin_port_range']['last'] %>
+rabbit:
+<% versions.each_pair do |version,info| %>
+  '<%= version %>':
+    config_template: <%= File.join(node_dir, "rabbit", "resources", info['config_template']) %>
+    rabbitmq_server: "<%= File.join(versions[version]['rabbitmq_base_path'], "sbin", "rabbitmq-server") %>"
+    <% if info['disk_free_limit'] -%>
+    disk_free_limit: <%= info['disk_free_limit'] %>
+    <%- end %>
+<% end %>
 rabbitmq_log_dir: <%= node['cloudfoundry_rabbitmq_service']['node']['db_logs_dir'] %>
-rabbitmq_server: <%= node['cloudfoundry_rabbitmq_service']['path'] %>/sbin/rabbitmq-server
 rabbitmq_start_timeout: 10
 fqdn_hosts: <%= node['cloudfoundry_rabbitmq_service']['node']['fqdn_hosts'] %>
 op_time_limit: <%= node['cloudfoundry_rabbitmq_service']['node']['op_time_limit'] %>
