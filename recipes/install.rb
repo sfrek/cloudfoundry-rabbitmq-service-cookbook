@@ -2,7 +2,7 @@
 # Cookbook Name:: cloudfoundry-rabbitmq-service
 # Recipe:: install
 #
-# Copyright 2012, ZephirWorks
+# Copyright 2012-2013, ZephirWorks
 # Copyright 2011, VMware
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
