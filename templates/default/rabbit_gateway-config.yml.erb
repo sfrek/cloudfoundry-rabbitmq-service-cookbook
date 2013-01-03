@@ -18,6 +18,9 @@ service:
   <% end %>
   timeout: <%= node['cloudfoundry_rabbitmq_service']['gateway']['timeout'] %>
 
+<% if node['cloudfoundry_rabbitmq_service']['gateway']['ip_route'] %>
+ip_route: <%= node['cloudfoundry_rabbitmq_service']['gateway']['ip_route'] %>
+<% end %>
 token: <%= node['cloudfoundry']['service_token'] %>
 logging:
   level: <%= node['cloudfoundry_rabbitmq_service']['gateway']['log_level'] %>
@@ -25,6 +28,10 @@ logging:
 
 pid: <%= @pid_file %>
 node_timeout: <%= node['cloudfoundry_rabbitmq_service']['gateway']['node_timeout'] %>
+z_interval: <%= node['cloudfoundry_rabbitmq_service']['gateway']['z_interval'] %>
+check_orphan_interval: <%= node['cloudfoundry_rabbitmq_service']['gateway']['check_orphan_interval'] %>
+double_check_orphan_interval: <%= node['cloudfoundry_rabbitmq_service']['gateway']['double_check_orphan_interval'] %>
+max_nats_payload: <%= node['cloudfoundry_rabbitmq_service']['node']['max_nats_payload'] %>
 
 plan_management:
   plans:

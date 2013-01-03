@@ -36,6 +36,18 @@ the service gateway daemon. Defaults to `info`.
 for talking to a service node. Defaults to `30`.
 `node['cloudfoundry_rabbitmq_service']['gateway']['timeout']` - Time out for
 completing (de)provisioning requests. Defaults to `15`.
+* `node['cloudfoundry_rabbitmq_service']['gateway']['ip_route']` - The IP address
+of a host that will be used to determine the correct IP address to use to
+talk to other components; or `nil` to use the default. Defaults to `nil`.
+* `node['cloudfoundry_rabbitmq_service']['node']['check_orphan_interval']` -
+Interval in seconds between checks for orphan service instances; set to -1 to
+only check on request. Defaults to `-1`.
+* `node['cloudfoundry_rabbitmq_service']['node']['double_check_orphan_interval']` -
+After a succesful first check for orphans, a second check will be run; this
+attribute determines the delay before this second check. Defaults to `300`.
+* `node['cloudfoundry_rabbitmq_service']['gateway']['max_nats_payload']` - Maximum
+size in bytes of a single announcement; bigger ones will be split into
+multiple messages. Defaults to `1048576`.
 
 node
 ----

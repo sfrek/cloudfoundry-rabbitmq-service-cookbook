@@ -30,3 +30,23 @@ default['cloudfoundry_rabbitmq_service']['gateway']['timeout'] = 15
 default['cloudfoundry_rabbitmq_service']['gateway']['version_aliases'] = {
   'current' => '2.4'
 }
+
+# The IP address of a host that will be used to determine the correct IP
+# address to use to talk to other components.
+default['cloudfoundry_rabbitmq_service']['gateway']['ip_route'] = nil
+
+# Frequency in seconds between updating and announcing "varz" (i.e. service
+# status information).
+default['cloudfoundry_rabbitmq_service']['node']['z_interval'] = 30
+
+# Interval in seconds between checks for orphan service instances; set to -1 to
+# only check on request.
+default['cloudfoundry_rabbitmq_service']['node']['check_orphan_interval'] = -1
+
+# After a succesful first check for orphans, a second check will be run; this
+# attribute determines the delay before this second check.
+default['cloudfoundry_rabbitmq_service']['node']['double_check_orphan_interval'] = 300
+
+# Maximum size in bytes of a single announcement; bigger ones will be split
+# into multiple messages.
+default['cloudfoundry_rabbitmq_service']['node']['max_nats_payload'] = 1048576
