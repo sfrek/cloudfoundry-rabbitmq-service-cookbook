@@ -51,3 +51,25 @@ default['cloudfoundry_rabbitmq_service']['node']['versions'] = {}
 
 # The default version for requests to this node.
 default['cloudfoundry_rabbitmq_service']['node']['default_version'] = "2.4"
+
+# Maximum percentage of memory to use.
+default['cloudfoundry_rabbitmq_service']['node']['max_memory_factor'] = 0.5
+
+# The IP address of a host that will be used to determine the correct IP
+# address to use to talk to other components.
+default['cloudfoundry_rabbitmq_service']['node']['ip_route'] = nil
+
+# Frequency in seconds between updating and announcing "varz" (i.e. service
+# status information).
+default['cloudfoundry_rabbitmq_service']['node']['z_interval'] = 30
+
+# Maximum size in bytes of a single announcement; bigger ones will be split
+# into multiple messages.
+default['cloudfoundry_rabbitmq_service']['node']['max_nats_payload'] = 1048576
+
+# If true, service bindings credentials will be issued using the hostname.
+# If false, the IP address will be used instead.
+default['cloudfoundry_rabbitmq_service']['node']['fqdn_hosts'] = false
+
+# Maximum time to wait during provisioning.
+default['cloudfoundry_rabbitmq_service']['node']['op_time_limit'] = 8

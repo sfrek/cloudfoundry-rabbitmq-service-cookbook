@@ -61,10 +61,17 @@ describe 'cloudfoundry-rabbitmq-service::node' do
       "logging" => {
         "level" => "info",
         "file" => "/var/log/cloudfoundry/rabbit_node.log"
-      }
+      },
+      "max_memory_factor" => 0.5,
+      "z_interval" => 30,
+      "max_nats_payload" => 1048576,
+      "fqdn_hosts" => false,
+      "op_time_limit" => 8
     }.each do |k,v|
       config[k].must_equal v
     end
+
+    config.has_key?('ip_route').must_equal false
   end
 
   it 'has no provisioned services' do

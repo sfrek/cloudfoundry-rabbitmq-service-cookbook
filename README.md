@@ -63,6 +63,22 @@ a directory that will be used when dumping and reimporting a node. Defaults
 to `/mnt/migration`.
 `node['cloudfoundry_rabbitmq_service']['node']['max_clients']` - Maximum
 number of clients that can connect to the service.. Defaults to `1000`.
+* `node['cloudfoundry_rabbitmq_service']['node']['max_memory_factor']` -
+Maximum percentage of memory to use. Defaults to `0.5`.
+* `node['cloudfoundry_rabbitmq_service']['node']['ip_route']` - The IP address
+of a host that will be used to determine the correct IP address to use to
+talk to other components; or `nil` to use the default. Defaults to `nil`.
+* `node['cloudfoundry_rabbitmq_service']['node']['z_interval']` - Frequency
+in seconds between updating and announcing "varz" (i.e. service status
+information). Defaults to `30`.
+* `node['cloudfoundry_rabbitmq_service']['node']['max_nats_payload']` - Maximum
+size in bytes of a single announcement; bigger ones will be split into
+multiple messages. Defaults to `1048576`.
+* `node['cloudfoundry_rabbitmq_service']['node']['fqdn_hosts']` - If true,
+service bindings credentials will be issued using the hostname. If false,
+the IP address will be used instead.. Defaults to `false`.
+* `node['cloudfoundry_rabbitmq_service']['node']['op_time_limit']` - Maximum
+time to wait during provisioning. Defaults to `6`.
 
 Usage
 =====
