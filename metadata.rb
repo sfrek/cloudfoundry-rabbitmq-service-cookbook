@@ -10,5 +10,5 @@ version          "1.1.1"
   supports os
 end
 
-depends "cloudfoundry", "~> 1.2.0"
-depends "cloudfoundry_service", "~> 1.2.1"
+depends "cloudfoundry"
+depends "cloudfoundry_service"
